@@ -1,15 +1,17 @@
-/* style.css */
+/* General Styles */
 body {
   font-family: 'Comic Sans MS', cursive, sans-serif;
   text-align: center;
   background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
   color: #fff;
+  overflow: hidden; /* Prevent scrolling during animations */
 }
 
 .container {
   margin-top: 50px;
 }
 
+/* Gift Box */
 .gift-box {
   font-size: 250px;
   cursor: pointer;
@@ -22,6 +24,7 @@ body {
   75% { transform: rotate(-5deg); }
 }
 
+/* Puzzle Section */
 .puzzle {
   display: flex;
   justify-content: center;
@@ -32,13 +35,46 @@ body {
   margin: 10px;
 }
 
-/* .final-cat {
-  width: 200px;
-} */
+/* Maze Styles */
+#maze {
+  display: grid;
+  grid-template-columns: repeat(7, 50px); /* Adjust columns based on maze size */
+  gap: 5px;
+  justify-content: center;
+  margin: 20px auto;
+}
 
+.maze-cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+}
+
+.maze-cell.wall {
+  background-color: #6f61ff; /* Walls are blue */
+}
+
+.maze-cell.path {
+  background-color: #fff; /* Paths are white */
+}
+
+.maze-cell.start {
+  background-color: #ff6f61; /* Start cell is red */
+}
+
+.maze-cell.end {
+  background-color: #ffd700; /* End cell is gold */
+}
+
+.player {
+  font-size: 30px;
+}
+
+
+/* Final Message */
 .cat-container {
     margin: 20px auto;
-  }
+}
   
 .cat {
 width: 200px;
@@ -46,31 +82,33 @@ border-radius: 50%;
 animation: bounce 2s infinite;
 }
   
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
 
-  .buttons button {
+.buttons button {
     padding: 15px;
     margin: 10px;
     font-size: large;
     border: none;
     border-radius: 10px;
-  }
+}
   
-  #yes-btn {
+#yes-btn {
     background-color: #ff6f61;
-  }
+}
   
-  #no-btn {
+#no-btn {
     background-color: #6f61ff;
-  }
+}
 
 .hidden {
-  display: none;
+display: none;
+}
+
+/* Floating Hearts Animation */
+@keyframes float-up {
+from { transform: translateY(0); opacity: 1; }
+to { transform: translateY(-100vh); opacity: 0; }
 }
