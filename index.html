@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>What do we have here? ❤️</h1>
+
+    <!-- Gift Box -->
+    <div class="gift-box" id="gift-box">
+      🎁
+    </div>
+
+    <!-- Puzzle Section -->
+    <div id="puzzle-section" class="hidden">
+      <h2>Solve this to unlock your surprise! 🧩</h2>
+      <div class="puzzle">
+        <button class="heart-piece" id="piece-1">💔</button>
+        <button class="heart-piece" id="piece-2">💔</button>
+        <button class="heart-piece" id="piece-3">💔</button>
+        <button class="heart-piece" id="piece-4">💔</button>
+        <button class="heart-piece" id="piece-5">💔</button>
+      </div>
+    </div>
+
+    <!-- Final Message -->
+    <div id="final-message" class="hidden">
+      <h2>Will you be my Valentine? 😻</h2>
+      <div class="cat-container" id="cat-container">
+        <img src="cat_img.png" alt="Happy Cat" class="cat">
+      </div>
+      <div class="buttons">
+        <button id="yes-btn">Yes! 😻</button>
+        <button id="no-btn">No 🙀</button>
+      </div>
+      <div id="response" class="hidden"></div>
+    </div>
+  </div>
+
+  <script>
+    // Gift Box Interaction
+    document.getElementById('gift-box').addEventListener('click', () => {
+      const giftBox = document.getElementById('gift-box');
+      giftBox.classList.add('hidden'); // Hide the gift box
+      const puzzleSection = document.getElementById('puzzle-section');
+      puzzleSection.classList.remove('hidden'); // Show the puzzle
+
+      // Breaking animation
+      giftBox.innerHTML = '💥';
+      giftBox.style.animation = 'explode 1s forwards';
+    });
+
+    // Puzzle Interaction
+    let solvedPieces = 0;
+
+    document.querySelectorAll('.heart-piece').forEach((piece) => {
+      piece.addEventListener('click', () => {
+        if (!piece.classList.contains('solved')) {
+          piece.textContent = '❤️'; // Change broken heart to full heart
+          piece.classList.add('solved');
+          solvedPieces++;
+
+          // Add scale-up animation
+          piece.style.transform = 'scale(1.3)';
+          setTimeout(() => piece.style.transform = 'scale(1)', 200);
+
+          if (solvedPieces === 5) {
+            showFinalMessage();
+          }
+        }
+      });
+    });
+
+    // Final Surprise
+    function showFinalMessage() {
+      const puzzleSection = document.getElementById('puzzle-section');
+      const finalMessage = document.getElementById('final-message');
+
+      puzzleSection.classList.add('hidden'); // Hide the puzzle
+      finalMessage.classList.remove('hidden'); // Show the final message
+
+      confetti(); // Trigger confetti effect
+    }
+
+    // Confetti Effect (Enhanced)
+    function confetti() {
+      const colors = ['#ff6f61', '#fad0c4', '#fff176', '#9b59b6', '#3498db'];
+      for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.top = `${Math.random() * window.innerHeight}px`;
+        confetti.style.left = `${Math.random() * window.innerWidth}px`;
+        document.body.appendChild(confetti);
+        confetti.style.animation = `confetti-fall ${Math.random() * 4 + 2}s linear infinite`;
+
+        setTimeout(() => confetti.remove(), 4000);
+      }
+    }
+
+    // Animation for falling confetti
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes confetti-fall {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(100vh) rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    document.getElementById('yes-btn').addEventListener('click', () => {
+      const response = document.getElementById('response');
+      response.classList.remove('hidden');
+      response.innerHTML = `<h2> FOOOKKKK YEAHHHHHHHHHH!!!!!! 🦾💦</h2>`;
+      confetti();
+      document.getElementById('cat-container').style.animation = 'bounce 3s ease-in-out infinite';
+    });
+
+    document.getElementById('no-btn').addEventListener('click', () => {
+      const response = document.getElementById('response');
+      response.classList.remove('hidden');
+      response.innerHTML = `<h2> CONGRATS you are friend zoned 😒</h2>`;
+    });
+  </script>
+</body>
+</html>
+

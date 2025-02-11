@@ -1,0 +1,76 @@
+/* style.css */
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  color: #fff;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.gift-box {
+  font-size: 250px;
+  cursor: pointer;
+  animation: shake 1s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.puzzle {
+  display: flex;
+  justify-content: center;
+}
+
+.heart-piece {
+  font-size: 50px;
+  margin: 10px;
+}
+
+/* .final-cat {
+  width: 200px;
+} */
+
+.cat-container {
+    margin: 20px auto;
+  }
+  
+.cat {
+width: 200px;
+border-radius: 50%;
+animation: bounce 2s infinite;
+}
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .buttons button {
+    padding: 15px;
+    margin: 10px;
+    font-size: large;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  #yes-btn {
+    background-color: #ff6f61;
+  }
+  
+  #no-btn {
+    background-color: #6f61ff;
+  }
+
+.hidden {
+  display: none;
+}
