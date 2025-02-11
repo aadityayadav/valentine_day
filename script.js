@@ -7,24 +7,6 @@ document.getElementById('gift-box').addEventListener('click', () => {
     document.getElementById('riddle-section').classList.remove('hidden');
   });
   
-//   // Riddle Interaction
-//   document.getElementById('submit-riddle').addEventListener('click', () => {
-//     const answer = document.getElementById('riddle-answer').value.toLowerCase();
-//     const feedback = document.getElementById('riddle-feedback');
-  
-//     if (answer === 'AR') {
-//       feedback.textContent = 'Correct! 🎉';
-//       feedback.style.color = 'green';
-//       setTimeout(() => {
-//         document.getElementById('riddle-section').classList.add('hidden');
-//         document.getElementById('puzzle-section').classList.remove('hidden');
-//       }, 1000);
-//     } else {
-//       feedback.textContent = 'Try again! 😅';
-//       feedback.style.color = 'red';
-//       feedback.classList.remove('hidden');
-//     }
-//   });
 // Riddle Interaction
     document.getElementById('submit-riddle').addEventListener('click', () => {
         const answer = document.getElementById('riddle-answer').value.trim().toLowerCase(); // Normalize input
