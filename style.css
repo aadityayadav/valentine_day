@@ -12,7 +12,42 @@ body {
 }
 
 /* Gift Box */
+/* Gift Box */
 .gift-box {
+  font-size: 250px;
+  cursor: pointer;
+  animation: shake 1s infinite;
+}
+
+/* Heart Explosion */
+@keyframes explode {
+  0% {
+    transform: scale(0) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3) translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+/* Heart styling */
+.heart {
+  position: absolute;
+  font-size: 30px;
+  color: red;
+  animation: explode 2s forwards; /* Increased animation time */
+  pointer-events: none; /* Prevent interaction with hearts */
+}
+
+/* Shake animation for the gift box */
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+/* .gift-box {
   font-size: 250px;
   cursor: pointer;
   animation: shake 1s infinite;
@@ -22,7 +57,7 @@ body {
   0%, 100% { transform: rotate(0); }
   25% { transform: rotate(5deg); }
   75% { transform: rotate(-5deg); }
-}
+} */
 
 /* Puzzle Section */
 .puzzle {

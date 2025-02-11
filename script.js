@@ -1,11 +1,47 @@
 // Gift Box Interaction
+// document.getElementById('gift-box').addEventListener('click', () => {
+//     const giftBox = document.getElementById('gift-box');
+    
+//     // Hide gift box and show riddle section
+//     giftBox.classList.add('hidden');
+//     document.getElementById('riddle-section').classList.remove('hidden');
+//   });
+  
 document.getElementById('gift-box').addEventListener('click', () => {
     const giftBox = document.getElementById('gift-box');
     
     // Hide gift box and show riddle section
     giftBox.classList.add('hidden');
     document.getElementById('riddle-section').classList.remove('hidden');
+    
+    // Trigger heart explosion animation
+    triggerHeartExplosion();
   });
+  
+  function triggerHeartExplosion() {
+    const heartsContainer = document.getElementById('hearts-container');
+    const numberOfHearts = 30; // Adjust the number of hearts
+  
+    for (let i = 0; i < numberOfHearts; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤️';
+      
+      // Position hearts randomly
+      const randomX = Math.random() * 100 - 50 + 'vw'; // Random horizontal distance
+      const randomY = Math.random() * 100 - 50 + 'vh'; // Random vertical distance
+      heart.style.setProperty('--x', randomX);
+      heart.style.setProperty('--y', randomY);
+      
+      // Add heart to the container
+      heartsContainer.appendChild(heart);
+      
+      // Remove heart after animation
+      setTimeout(() => {
+        heart.remove();
+      }, 1000); // The time should match the animation duration
+    }
+  }
   
 // Riddle Interaction
     document.getElementById('submit-riddle').addEventListener('click', () => {
